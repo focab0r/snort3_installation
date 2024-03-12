@@ -1,11 +1,28 @@
 #!/bin/bash
 
-sudo apt update
-sudo apt upgrade
+### Colors ###
 
-cp CMakeLists.txt ~/Downloads
-cp FindHWLOC.cmake ~/Downloads
-cd ~/Downloads
+RED="\e[31m"
+YELLOW="\e[33m"
+GREEN="\e[32m"
+BLUE="\e[36m"
+WHITE="\e[37m"
+PURPLE="\e[35m"
+ENDCOLOR="\e[0m"
+
+setxkbmap es
+
+${RED}echo "ATENCION!! Este script puede reventar tu ordenador. No te recomiendo que lo ejecutes, a menos que sepas que es lo que hace, y estes en una VM. Todo a continuación será responsabilidad tuya. Ethamos? (Pulsa enter si estas hack, sino Control+C) > ${ENDCOLOR}"
+read rtext
+
+${RED}echo "ATENCION!! Este script esta diseñado para ejecutarse en ordenadores con idioma Ingles (que es lo que deberias tener). Si aun asi no lo tienes, edita este archivo y en las lineas que pone "AQUIIIIIII", sustituye "~/Downloads" por "~/Descargas", o en el idioma que te de la gana. Si quieres cambiarlo, Control+C, sino al enter > ${ENDCOLOR}"
+read rtext
+sudo apt update
+sudo apt upgrade -y
+
+cp CMakeLists.txt ~/Downloads	# AQUIIIIII
+cp FindHWLOC.cmake ~/Downloads	# AQUIIIIII
+cd ~/Downloads			# AQUIIIIII
 
 # Download all the GITs
 git clone https://github.com/snort3/libdaq.git
@@ -19,26 +36,28 @@ mv FindHWLOC.cmake snort3/cmake
 
 # Install packets with APT
 
-sudo apt-get install autoconf
-sudo apt-get install pkg-config
-sudo apt-get install libtool
-sudo apt-get install cmake
-sudo apt-get install check
-sudo apt-get install libssl-dev
-sudo apt-get install libpcap-dev
-sudo apt-get install libpcre3-dev
-sudo apt-get install liblzma-dev
+sudo apt-get install -y autoconf
+sudo apt-get install -y pkg-config
+sudo apt-get install -y libtool
+sudo apt-get install -y cmake
+sudo apt-get install -y check
+sudo apt-get install -y libssl-dev
+sudo apt-get install -y libpcap-dev
+sudo apt-get install -y libpcre3-dev
+sudo apt-get install -y liblzma-dev
 
 # Aquí ya empezamos con librerias. 
 
 # libdaq
 cd libdaq
+./bootstrap
 ./configure --prefix=/usr/local/lib/daq_s3
 sudo make install
 sudo ldconfig
 
 # libdnet
 cd ../libdnet
+./configure --prefix=/usr/local/lib/dnet
 sudo make install
 
 # hwloc
