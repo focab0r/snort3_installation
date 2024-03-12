@@ -103,9 +103,9 @@ echo -e "${BLUE}[*]${ENDCOLOR} Ya casi esta! Retocamos un par de cosillas..."
 sleep (5)
 
 # Linkeamos librerias
-sudo echo '/usr/local/lib/daq_s3/lib/' > /etc/ld.so.conf.d/libdaq3.conf 
-sudo echo '/usr/local/lib/dnet/lib/' > /etc/ld.so.conf.d/libdnet.conf
-sudo echo '/usr/local/lib/hwloc/lib/' > /etc/ld.so.conf.d/libhwloc.conf
+echo '/usr/local/lib/daq_s3/lib/' | sudo tee -a /etc/ld.so.conf.d/libdaq3.conf 
+echo '/usr/local/lib/dnet/lib/' | sudo tee -a /etc/ld.so.conf.d/libdnet.conf
+echo '/usr/local/lib/hwloc/lib/' | sudo tee -a /etc/ld.so.conf.d/libhwloc.conf
 
 sudo ldconfig
 
