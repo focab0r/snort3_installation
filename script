@@ -1,0 +1,67 @@
+#!/bin/bash
+
+sudo apt update
+sudo apt upgrade
+
+cp CMakeLists.txt ~/Downloads
+cp FindHWLOC.cmake ~/Downloads
+cd ~/Downloads
+
+# Download all the GITs
+git clone https://github.com/snort3/libdaq.git
+git clone https://github.com/snort3/snort3.git # Agregar mi repo
+git clone https://github.com/ofalk/libdnet.git
+git clone https://github.com/open-mpi/hwloc.git
+git clone https://luajit.org/git/luajit.git
+
+mv CMakeLists.txt snort3
+mv FindHWLOC.cmake snort3/cmake
+
+# Install packets with APT
+
+sudo apt-get install autoconf
+sudo apt-get install pkg-config
+sudo apt-get install libtool
+sudo apt-get install cmake
+sudo apt-get install check
+sudo apt-get install libssl-dev
+sudo apt-get install libpcap-dev
+sudo apt-get install libpcre3-dev
+sudo apt-get install liblzma-dev
+
+# Aquí ya empezamos con librerias. 
+
+# libdaq
+cd libdaq
+./configure --prefix=/usr/local/lib/daq_s3
+sudo make install
+sudo ldconfig
+
+# libdnet
+cd ../libdnet
+sudo make install
+
+# hwloc
+cd ../hwloc
+./autogen.sh --prefix=/usr/local/lib/hwloc
+./configure --prefix=/usr/local/lib/hwloc
+sudo make install
+
+cd ../luajit
+sudo make install
+
+cd ../snort3
+./configure_cmake.sh --with-daq-includes=/usr/local/lib/daq_s3/include/ --with-daq-libraries=/usr/local/lib/daq_s3/lib/  --with-dnet-includes=/usr/local/lib/dnet/include --with-dnet-libraries=/usr/local/lib/dnet/lib
+
+
+# Ahora construimos la cosa esta...
+cd build
+make -j $(nproc)
+sudo make install
+
+# Linkeamos librerias
+sudo echo '/usr/local/lib/daq_s3/lib/' > /etc/ld.so.conf.d/libdaq3.conf 
+sudo echo '/usr/local/lib/dnet/lib/' > /etc/ld.so.conf.d/libdnet.conf
+sudo echo '/usr/local/lib/hwloc/lib/' > /etc/ld.so.conf.d/libhwloc.conf
+
+sudo ldconfig
