@@ -13,6 +13,12 @@ $> ./installer
 
 Con ejecutar el fichero `installer` vale. Por favor, como user normal, no como root. Ya te pedirá los permisos durante la instalacion. Ah, y esta probado en Kali, [ultima version](https://cdimage.kali.org/kali-2024.1/kali-linux-2024.1-virtualbox-amd64.7z). 
 
+## Uso ##
+
+```
+/usr/local/snort/bin/snort --daq-dir /usr/local/lib/daq_s3/lib/daq 
+```
+Para todo comando, es necesario agregar el `--daq-dir ...`. Si el comando se hace muy pesado, lo mas facil es añadir un shortcut en el `.zshrc`.
 ## Disclaimer ##
 
 No me hago responsable de que la VM muera, asi que recomendable hacer una Snapshot. El script no esta depurado, por lo que si falla responsabilidad del que lo ejecuta.
