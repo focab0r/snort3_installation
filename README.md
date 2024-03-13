@@ -11,7 +11,7 @@ $> cd snort3_installation
 $> ./installer
 ```
 
-Con ejecutar el fichero `installer` vale. Por favor, como user normal, no como root. Ya te pedirá los permisos durante la instalacion. Ah, y esta probado en Kali, ultima version. 
+Con ejecutar el fichero `installer` vale. Por favor, como user normal, no como root. Ya te pedirá los permisos durante la instalacion. Ah, y esta probado en Kali, [ultima version](https://cdimage.kali.org/kali-2024.1/kali-linux-2024.1-virtualbox-amd64.7z). 
 
 ## Disclaimer ##
 
