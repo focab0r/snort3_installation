@@ -16,9 +16,19 @@ Con ejecutar el fichero `installer` vale. Por favor, como user normal, no como r
 ## Uso ##
 
 ```
-/usr/local/snort/bin/snort --daq-dir /usr/local/lib/daq_s3/lib/daq 
+$> /usr/local/snort/bin/snort --daq-dir /usr/local/lib/daq_s3/lib/daq 
 ```
 Para todo comando, es necesario agregar el `--daq-dir ...`. Si el comando se hace muy pesado, lo mas facil es añadir un shortcut en el `.zshrc`.
+
+Por ejemplo, añade la siguientes lineas al final del fichero `.zshrc`. Despues de reiniciar la terminal, podras llamar al comando `snort` de manera normal.
+```
+export PATH=$PATH:/usr/local/snort/bin
+alias "snort"="/usr/local/snort/bin/snort --daq-dir /usr/local/lib/daq_s3/lib/daq"
+```
+Despues:
+```
+$> snort -V
+```
 ## Disclaimer ##
 
 No me hago responsable de que la VM muera, asi que recomendable hacer una Snapshot. El script no esta depurado, por lo que si falla responsabilidad del que lo ejecuta.
