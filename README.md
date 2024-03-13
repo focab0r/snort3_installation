@@ -22,3 +22,16 @@ El archivo `CMakeLists.txt` no es mio, sino que esta modificado de la copia orig
 ## Issues ##
 
 Si se produce un error durante la instalacion, abre un ticket en Issues de Github y lo mirare. Sino, no admito quejas sin el output del codigo.
+
+Para abrir un ticket, pega el error que de durante la instalacion, junto con la version del SO que estes utilizando. Recuerda que esta probado en el ultimo Kali, los demas no tienen porque funcionar. El ticket debe de seguir la siguiente estructura:
+
+OS version:
+```
+$> uname -a    
+
+Linux kali 6.6.9-amd64 #1 SMP PREEMPT_DYNAMIC Kali 6.6.9-1kali1 (2024-01-08) x86_64 GNU/Linux
+```
+Error:
+```
+Unable to find: hacktheworld.exe
+```
