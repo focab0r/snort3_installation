@@ -8,10 +8,10 @@ Instalador automatico para Snort3
 $> cd ~/Downloads
 $> git clone https://github.com/focab0r/snort3_installation.git
 $> cd snort3_installation
-$> ./script
+$> ./installer
 ```
 
-Con ejecutar el ficher `script` vale. Por favor, como user normal, no como root. Ya te pedirá los permisos durante la instalacion. Ah, y esta probado en Kali, ultima version. 
+Con ejecutar el fichero `installer` vale. Por favor, como user normal, no como root. Ya te pedirá los permisos durante la instalacion. Ah, y esta probado en Kali, ultima version. 
 
 ## Disclaimer ##
 
